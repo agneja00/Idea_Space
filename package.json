@@ -5,7 +5,7 @@
   "scripts": {
     "b": "pnpm --filter @ideanick/backend",
     "w": "pnpm --filter @ideanick/frontend",
-    "dev": "pnpm -r --parallel dev",
+    "dev": "concurrently \"pnpm --filter @ideanick/backend dev\" \"pnpm --filter @ideanick/frontend dev\"",
     "types": "concurrently \"pnpm b run types\" \"pnpm w run types\"",
     "lint": "concurrently \"pnpm b run lint\" \"pnpm w run lint\"",
     "prettify": "pnpm -r --parallel prettify",

@@ -5,9 +5,9 @@
   "scripts": {
     "b": "pnpm --filter @ideanick/backend",
     "w": "pnpm --filter @ideanick/frontend",
-    "dev": "pnpm -r --parallel dev",
-    "types": "pnpm -r --parallel types",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext .ts,.tsx .",
+    "types": "pnpm -r --parallel types",
     "prettify": "pnpm -r --parallel prettify",
     "prepare": "husky install"
   },
