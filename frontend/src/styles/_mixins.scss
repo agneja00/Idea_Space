@@ -1,5 +1,5 @@
-@import "./_vars.scss";
-@import "../../node_modules/include-media/dist/_include-media.scss";
+@use "reset-css/sass/reset" as *;
+@use "./_vars" as *;
 
 @mixin link($color: $blue, $hoverColor: $red) {
   color: $color;

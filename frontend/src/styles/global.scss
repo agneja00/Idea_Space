@@ -1,5 +1,5 @@
-@import "../../node_modules/reset-css/sass/_reset.scss";
-@import "./_vars.scss";
+@use "reset-css/sass/reset" as *;
+@use "./_vars" as *;
 
 html,
 body,
