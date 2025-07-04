@@ -1,4 +1,4 @@
-import './styles/global.scss'
+import "./styles/global.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { getAllIdeasRoute, getViewIdeaRoute, viewIdeaRouteParams } from "./lib/routes";
