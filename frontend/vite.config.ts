@@ -13,7 +13,7 @@ export default defineConfig({
       scss: {
         additionalData: `
           @use "include-media" as *;
-          @use "../../node_modules/reset-css/sass/reset" as *;
+          @use "reset-css/sass/reset" as *;
           @use "@/styles/_vars" as *;
           @use "@/styles/_mixins" as *;
         `,
