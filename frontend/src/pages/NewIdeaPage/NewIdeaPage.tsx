@@ -4,8 +4,10 @@ import { z } from "zod";
 import { Input } from "../../components/Input/Input";
 import { Segment } from "../../components/Segment/Segment";
 import { Textarea } from "../../components/Textarea/Textarea";
+import { trpc } from "../../lib/trpc";
 
 export const NewIdeaPage = () => {
+  const createIdea = trpc.createIdea.useMutation();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -26,8 +28,8 @@ export const NewIdeaPage = () => {
       }),
     ),
 
-    onSubmit: (values) => {
-      console.info("Submitted", values);
+    onSubmit: async (values) => {
+      await createIdea.mutateAsync(values);
     },
   });
 
