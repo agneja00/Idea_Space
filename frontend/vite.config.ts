@@ -14,8 +14,8 @@ export default defineConfig({
         additionalData: `
           @use "include-media" as *;
           @use "reset-css/sass/reset" as *;
-          @use "@/styles/_vars" as *;
-          @use "@/styles/_mixins" as *;
+          @use "@/styles/vars" as *;
+          @use "@/styles/mixins" as *;
         `,
       },
     },
