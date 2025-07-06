@@ -28,6 +28,13 @@
     }
   }
 
+  .textarea {
+    min-height: 150px;
+    width: 100%;
+    max-width: none;
+    resize: vertical;
+  }
+
   .error {
     margin-top: 2px;
     color: $red;
