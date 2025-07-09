@@ -20,13 +20,13 @@ const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
       url: "http://localhost:3001/trpc",
+      transformer: superjson,
       headers: () => {
         const token = Cookies.get("token");
         return {
           ...(token && { authorization: `Bearer ${token}` }),
         };
       },
-      transformer: superjson,
     }),
   ],
 });
