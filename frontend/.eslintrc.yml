@@ -9,3 +9,9 @@ overrides:
       - vite.config.ts
     parserOptions:
       project: ./tsconfig.node.json
+
+rules:
+  no-restricted-syntax:
+    - error
+    - selector: "[object.type=MetaProperty][property.name=env]"
+      message: Use instead import { env } from "lib/env"
