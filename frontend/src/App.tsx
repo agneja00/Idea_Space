@@ -8,6 +8,7 @@ import { AllIdeasPage } from "./pages/AllIdeasPage/AllIdeasPage";
 import { ViewIdeaPage } from "./pages/ViewIdeaPage/ViewIdeaPage";
 import { EditIdeaPage } from "./pages/EditIdeaPage/EditIdeaPage";
 import { NewIdeaPage } from "./pages/NewIdeaPage/NewIdeaPage";
+import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { SignUpPage } from "./pages/SignUpPage/SignUpPage";
 import { SignInPage } from "./pages/SignInPage/SignInPage";
 import { SignOutPage } from "./pages/SignOutPage/SignOutPage";
@@ -26,6 +27,7 @@ export const App = () => {
               <Route path={routes.getNewIdeaRoute()} element={<NewIdeaPage />} />
               <Route path={routes.getViewIdeaRoute(routes.viewIdeaRouteParams)} element={<ViewIdeaPage />} />
               <Route path={routes.getEditIdeaRoute(routes.editIdeaRouteParams)} element={<EditIdeaPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
