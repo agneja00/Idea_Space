@@ -1,6 +1,7 @@
 import { format } from "date-fns/format";
 import css from "./ViewIdeaPage.module.scss";
 import { Segment } from "../../components/Segment/Segment";
+import { useMe } from "../../lib/ctx";
 import { LinkButton } from "../../components/Button/Button";
 import { useParams } from "react-router-dom";
 import { getEditIdeaRoute, type ViewIdeaRouteParams } from "../../lib/routes";
@@ -13,9 +14,9 @@ export const ViewIdeaPage = () => {
     ideaNick,
   });
 
-  const getMeResult = trpc.getMe.useQuery();
+  const me = useMe();
 
-  if (getIdeaResult.isLoading || getIdeaResult.isFetching || getMeResult.isLoading || getMeResult.isFetching) {
+  if (getIdeaResult.isLoading || getIdeaResult.isFetching) {
     return <span>Loading...</span>;
   }
 
@@ -23,16 +24,11 @@ export const ViewIdeaPage = () => {
     return <span>Error: {getIdeaResult.error.message}</span>;
   }
 
-  if (getMeResult.isError) {
-    return <span>Error: {getMeResult.error.message}</span>;
-  }
-
   if (!getIdeaResult?.data?.idea) {
     return <span>Idea not found</span>;
   }
 
   const idea = getIdeaResult.data?.idea;
-  const me = getMeResult.data?.me;
 
   return (
     <Segment title={idea.name} description={idea.description}>
