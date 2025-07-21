@@ -4,14 +4,14 @@ import { Layout } from "./components/Layout/Layout";
 import { AppContextProvider } from "./lib/ctx";
 import * as routes from "./lib/routes";
 import { TrpcProvider } from "./lib/trpc";
-import { AllIdeasPage } from "./pages/AllIdeasPage/AllIdeasPage";
-import { ViewIdeaPage } from "./pages/ViewIdeaPage/ViewIdeaPage";
-import { EditIdeaPage } from "./pages/EditIdeaPage/EditIdeaPage";
-import { NewIdeaPage } from "./pages/NewIdeaPage/NewIdeaPage";
-import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
-import { SignUpPage } from "./pages/SignUpPage/SignUpPage";
-import { SignInPage } from "./pages/SignInPage/SignInPage";
-import { SignOutPage } from "./pages/SignOutPage/SignOutPage";
+import { AllIdeasPage } from "./pages/ideas/AllIdeasPage/AllIdeasPage";
+import { ViewIdeaPage } from "./pages/ideas/ViewIdeaPage/ViewIdeaPage";
+import { EditIdeaPage } from "./pages/ideas/EditIdeaPage/EditIdeaPage";
+import { NewIdeaPage } from "./pages/ideas/NewIdeaPage/NewIdeaPage";
+import { NotFoundPage } from "./pages/other/NotFoundPage/NotFoundPage";
+import { SignUpPage } from "./pages/auth/SignUpPage/SignUpPage";
+import { SignInPage } from "./pages/auth/SignInPage/SignInPage";
+import { SignOutPage } from "./pages/auth/SignOutPage/SignOutPage";
 
 export const App = () => {
   return (

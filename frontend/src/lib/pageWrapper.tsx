@@ -2,7 +2,7 @@ import { type UseTRPCQueryResult, type UseTRPCQuerySuccessResult } from "@trpc/r
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ErrorPageComponent } from "../components/ErrorPageComponent/ErrorPageComponent";
-import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
+import { NotFoundPage } from "../pages/other/NotFoundPage/NotFoundPage";
 import { useAppContext, type AppContext } from "./ctx";
 import { getAllIdeasRoute } from "./routes";
 
