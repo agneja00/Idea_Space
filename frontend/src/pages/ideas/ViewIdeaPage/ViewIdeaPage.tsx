@@ -7,6 +7,7 @@ import { withPageWrapper } from "../../../lib/pageWrapper";
 import { Alert } from "../../../components/Alert/Alert";
 import { Button, LinkButton } from "../../../components/Button/Button";
 import { FormItems } from "../../../components/FormItems/FormItems";
+import { Icon } from "../../../components/Icon/Icon";
 import { useForm } from "../../../lib/form";
 import { useParams } from "react-router-dom";
 import { getEditIdeaRoute, type ViewIdeaRouteParams } from "../../../lib/routes";
@@ -61,7 +62,7 @@ const LikeButton = ({ idea }: { idea: NonNullable<TrpcRouterOutput["getIdea"]["i
         void setIdeaLike.mutateAsync({ ideaId: idea.id, isLikedByMe: !idea.isLikedByMe });
       }}
     >
-      {idea.isLikedByMe ? "Unlike" : "Like"}
+      <Icon size={32} className={css.likeIcon} name={idea.isLikedByMe ? "likeFilled" : "likeEmpty"} />
     </button>
   );
 };
