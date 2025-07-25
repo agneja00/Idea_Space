@@ -11,40 +11,41 @@ datasource db {
 model User {
   id          String           @id @default(uuid())
   nick        String           @unique
-  name        String           @default("")
   password    String
   createdAt   DateTime         @default(now())
+  name        String           @default("")
+  permissions UserPermission[]
+  email       String?
   ideas       Idea[]
   ideasLikes  IdeaLike[]
-  permissions UserPermission[]
-}
-
-enum UserPermission {
-  BLOCK_IDEAS
-  ALL
 }
 
 model Idea {
   id           String     @id @default(uuid())
   nick         String     @unique
-  serialNumber Int        @unique @default(autoincrement())
   name         String
   description  String
   text         String
   createdAt    DateTime   @default(now())
   authorId     String
+  serialNumber Int        @unique @default(autoincrement())
+  blockedAt    DateTime?
   author       User       @relation(fields: [authorId], references: [id])
   ideasLikes   IdeaLike[]
-  blockedAt    DateTime?
 }
 
 model IdeaLike {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
-  idea      Idea     @relation(fields: [ideaId], references: [id])
   ideaId    String
-  user      User     @relation(fields: [userId], references: [id])
   userId    String
+  idea      Idea     @relation(fields: [ideaId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 
   @@unique([ideaId, userId])
+}
+
+enum UserPermission {
+  BLOCK_IDEAS
+  ALL
 }
