@@ -5,7 +5,9 @@
   "scripts": {
     "b": "pnpm --filter @ideanick/backend",
     "w": "pnpm --filter @ideanick/frontend",
-    "dev": "ts-node-dev --watch ./.env --rs --exit-child ./src/index.ts",
+    "dev": "ts-node-dev --watch ./src/emails/dist,./.env --rs --exit-child ./src/index.ts",
+    "build-emails": "rimraf ./src/emails/dist && mkdir ./src/emails/dist && mjml ./src/emails/[!_]*.mjml -o ./src/emails/dist",
+    "watch-emails": "mjml -w ./src/emails/[!_]*.mjml -o ./src/emails/dist",
     "pmd": "prisma migrate dev",
     "pgc": "prisma generate",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext .ts,.tsx .",
@@ -24,6 +26,7 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
+    "mjml": "^4.15.3",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "superjson": "^1.13.3",
