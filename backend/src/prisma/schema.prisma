@@ -15,7 +15,7 @@ model User {
   createdAt   DateTime         @default(now())
   name        String           @default("")
   permissions UserPermission[]
-  email       String?
+  email       String           @unique
   ideas       Idea[]
   ideasLikes  IdeaLike[]
 }
