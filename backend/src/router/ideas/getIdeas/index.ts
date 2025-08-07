@@ -55,7 +55,7 @@ export const getIdeasTrpcRoute = trpc.procedure.input(zGetIdeasTrpcInput).query(
     take: input.limit + 1,
   });
 
-  const nextIdea = rawIdeas.at(input.limit);
+  const nextIdea = rawIdeas[input.limit];
   const nextCursor = nextIdea?.serialNumber;
   const rawIdeasExceptNext = rawIdeas.slice(0, input.limit);
   const ideasExceptNext = rawIdeasExceptNext.map((idea) => ({
