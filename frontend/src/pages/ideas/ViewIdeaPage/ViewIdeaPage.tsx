@@ -9,8 +9,7 @@ import { Button, LinkButton } from "../../../components/Button/Button";
 import { FormItems } from "../../../components/FormItems/FormItems";
 import { Icon } from "../../../components/Icon/Icon";
 import { useForm } from "../../../lib/form";
-import { useParams } from "react-router-dom";
-import { getEditIdeaRoute, type ViewIdeaRouteParams } from "../../../lib/routes";
+import { getEditIdeaRoute, getViewIdeaRoute } from "../../../lib/routes";
 import { trpc } from "../../../lib/trpc";
 
 const BlockIdea = ({ idea }: { idea: NonNullable<TrpcRouterOutput["getIdea"]["idea"]> }) => {
@@ -69,7 +68,7 @@ const LikeButton = ({ idea }: { idea: NonNullable<TrpcRouterOutput["getIdea"]["i
 
 export const ViewIdeaPage = withPageWrapper({
   useQuery: () => {
-    const { ideaNick } = useParams() as ViewIdeaRouteParams;
+    const { ideaNick } = getViewIdeaRoute.useParams();
     return trpc.getIdea.useQuery({
       ideaNick,
     });
