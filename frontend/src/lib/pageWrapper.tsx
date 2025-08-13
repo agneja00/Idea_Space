@@ -1,12 +1,13 @@
+import { useStore } from "@nanostores/react";
 import { type UseTRPCQueryResult, type UseTRPCQuerySuccessResult } from "@trpc/react-query/shared";
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { ErrorPageComponent } from "../components/ErrorPageComponent/ErrorPageComponent";
 import { Loader } from "../components/Loader/Loader";
+import { lastVisistedNotAuthRouteStore } from "../components/NotAuthRouteTracker/NotAuthRouteTracker";
 import { NotFoundPage } from "../pages/other/NotFoundPage/NotFoundPage";
 import { useAppContext, type AppContext } from "./ctx";
-import { getAllIdeasRoute } from "./routes";
 
 class CheckExistsError extends Error {}
 const checkExistsFn = <T,>(value: T, message?: string): NonNullable<T> => {
@@ -83,6 +84,7 @@ const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult
   Page,
   showLoaderOnFetching = true,
 }: PageWrapperProps<TProps, TQueryResult>) => {
+  const lastVisistedNotAuthRoute = useStore(lastVisistedNotAuthRouteStore);
   const navigate = useNavigate();
   const ctx = useAppContext();
   const queryResult = useQuery?.();
@@ -91,9 +93,9 @@ const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult
 
   useEffect(() => {
     if (redirectNeeded) {
-      navigate(getAllIdeasRoute(), { replace: true });
+      navigate(lastVisistedNotAuthRoute, { replace: true });
     }
-  }, [redirectNeeded, navigate]);
+  }, [redirectNeeded, navigate, lastVisistedNotAuthRoute]);
 
   if (queryResult?.isLoading || (showLoaderOnFetching && queryResult?.isFetching) || redirectNeeded) {
     return <Loader type="page" />;
@@ -166,6 +168,10 @@ export const withPageWrapper = <TProps extends Props = {}, TQueryResult extends 
   pageWrapperProps: Omit<PageWrapperProps<TProps, TQueryResult>, "Page">,
 ) => {
   return (Page: PageWrapperProps<TProps, TQueryResult>["Page"]) => {
-    return () => <PageWrapper {...pageWrapperProps} Page={Page} />;
+    const WrappedPage: React.FC = () => <PageWrapper {...pageWrapperProps} Page={Page} />;
+
+    WrappedPage.displayName = `withPageWrapper(${Page.displayName || Page.name || "Anonymous"})`;
+
+    return WrappedPage;
   };
 };

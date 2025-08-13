@@ -5,6 +5,7 @@ import { Layout } from "./components/Layout/Layout";
 import { AppContextProvider } from "./lib/ctx";
 import * as routes from "./lib/routes";
 import { TrpcProvider } from "./lib/trpc";
+import { NotAuthRouteTracker } from "./components/NotAuthRouteTracker/NotAuthRouteTracker";
 import { AllIdeasPage } from "./pages/ideas/AllIdeasPage/AllIdeasPage";
 import { ViewIdeaPage } from "./pages/ideas/ViewIdeaPage/ViewIdeaPage";
 import { EditIdeaPage } from "./pages/ideas/EditIdeaPage/EditIdeaPage";
@@ -21,6 +22,7 @@ export const App = () => {
       <TrpcProvider>
         <AppContextProvider>
           <BrowserRouter>
+            <NotAuthRouteTracker />
             <Routes>
               <Route path={routes.getSignOutRoute.definition} element={<SignOutPage />} />
               <Route element={<Layout />}>

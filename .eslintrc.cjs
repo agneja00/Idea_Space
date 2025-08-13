@@ -7,22 +7,20 @@ module.exports = {
   },
   parserOptions: {
     ecmaVersion: 2023,
-    sourceType: 'module',
+    sourceType: "module",
   },
-  extends: [
-    'eslint:recommended',
-  ],
+  extends: ["eslint:recommended"],
   rules: {
-    'no-console': 'warn',
-    'semi': ['error', 'always'],
-    'quotes': ['error', 'single'],
+    "no-console": "warn",
+    semi: ["error", "always"],
+    quotes: ["error", "double"],
   },
   overrides: [
     {
-      files: ['*.ts', '*.tsx'],
-      parser: '@typescript-eslint/parser',
-      extends: ['plugin:@typescript-eslint/recommended'],
-      plugins: ['@typescript-eslint'],
+      files: ["*.ts", "*.tsx"],
+      parser: "@typescript-eslint/parser",
+      extends: ["plugin:@typescript-eslint/recommended"],
+      plugins: ["@typescript-eslint"],
       rules: {},
     },
   ],

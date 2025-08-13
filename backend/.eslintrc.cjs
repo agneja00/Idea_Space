@@ -6,12 +6,10 @@ module.exports = {
   },
   parserOptions: {
     ecmaVersion: 2023,
-    sourceType: 'module',
+    sourceType: "module",
   },
-  extends: [
-    '../.eslintrc.cjs',
-  ],
+  extends: ["../.eslintrc.cjs"],
   rules: {
-    'no-unused-vars': 'warn',
+    "no-unused-vars": "warn",
   },
 };
