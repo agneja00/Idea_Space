@@ -5,22 +5,30 @@
   "scripts": {
     "b": "pnpm --filter @ideanick/backend",
     "w": "pnpm --filter @ideanick/frontend",
+    "sh": "pnpm --filter @ideanick/shared",
     "dev": "concurrently \"pnpm --filter @ideanick/backend dev\" \"pnpm --filter @ideanick/frontend dev\"",
-    "types": "concurrently \"pnpm b run types\" \"pnpm w run types\"",
-    "lint": "concurrently \"pnpm b run lint\" \"pnpm w run lint\"",
+    "types": "concurrently \"pnpm b types\" \"pnpm w types\" \"pnpm sh types\"",
+    "lint": "concurrently \"pnpm b lint\" \"pnpm w lint\" \"pnpm sh lint\"",
     "prettify": "pnpm -r --parallel prettify",
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "7.8.0",
-    "@typescript-eslint/parser": "7.8.0",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/parser": "5.62.0",
     "concurrently": "^9.2.0",
     "copyfiles": "^2.4.1",
     "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.1",
     "eslint-config-react-app": "^7.0.1",
-    "eslint-config-standard-with-typescript": "^37.0.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-n": "^17.21.3",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "husky": "^8.0.3",
     "lint-staged": "^16.1.2",
     "prettier": "^3.6.2",
@@ -30,6 +38,7 @@
     "ts-patch": "^3.3.0",
     "tslint": "^6.1.3",
     "typescript": "^5.8.3",
+    "typescript-eslint": "^8.40.0",
     "typescript-transform-paths": "^3.5.5"
   }
 }

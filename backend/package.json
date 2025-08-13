@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@ideanick/frontend": "workspace:*",
+    "@ideanick/shared": "workspace:*",
     "@prisma/client": "^6.12.0",
     "@trpc/server": "^11.4.2",
     "cors": "^2.8.5",
@@ -50,10 +51,20 @@
     "@types/node": "^24.0.4",
     "@types/passport": "^1.0.17",
     "@types/passport-jwt": "^4.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "husky": "^9.1.7",
     "mjml": "^4.15.3",
+    "prettier": "^3.6.2",
     "prisma": "^6.12.0",
-    "shx": "^0.4.0"
+    "shx": "^0.4.0",
+    "typescript-eslint": "^8.40.0"
   }
 }

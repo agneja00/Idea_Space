@@ -2,7 +2,6 @@ import { CronJob } from "cron";
 import { notifyAboutMostLikedIdeas } from "../scripts/notifyAboutMostLikedIdeas";
 import { type AppContext } from "./ctx";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const applyCron = (ctx: AppContext) => {
   new CronJob(
     "0 10 1 * *", // At 10:00 on day-of-month 1
