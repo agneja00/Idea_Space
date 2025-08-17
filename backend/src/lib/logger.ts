@@ -1,5 +1,10 @@
+import { EOL } from "os";
+import _ from "lodash";
+import pc from "picocolors";
 import { serializeError } from "serialize-error";
+import { MESSAGE } from "triple-beam";
 import winston from "winston";
+import * as yaml from "yaml";
 import { env } from "./env";
 
 export const winstonLogger = winston.createLogger({
@@ -14,7 +19,47 @@ export const winstonLogger = winston.createLogger({
   defaultMeta: { service: "backend", hostEnv: env.HOST_ENV },
   transports: [
     new winston.transports.Console({
-      format: winston.format.json(),
+      format:
+        env.HOST_ENV !== "local"
+          ? winston.format.json()
+          : winston.format((logData) => {
+              const level = String(logData.level);
+              const timestamp = String(logData.timestamp ?? "");
+              const message = String(logData.message ?? "");
+
+              const setColor =
+                {
+                  info: (str: string) => pc.blue(str),
+                  error: (str: string) => pc.red(str),
+                  debug: (str: string) => pc.cyan(str),
+                }[level as "info" | "error" | "debug"] ?? ((s: string) => s);
+
+              const levelAndType = `${level} ${logData.logType ?? ""}`;
+              const topMessage = `${setColor(levelAndType)} ${pc.green(timestamp)}${EOL}${message}`;
+
+              const visibleMessageTags = _.omit(logData, [
+                "level",
+                "logType",
+                "timestamp",
+                "message",
+                "service",
+                "hostEnv",
+              ]);
+
+              const stringifyedLogData = _.trim(
+                yaml.stringify(visibleMessageTags, (_k, v) => (_.isFunction(v) ? "Function" : v)),
+              );
+
+              const resultLogData = {
+                ...logData,
+                [MESSAGE]:
+                  [topMessage, Object.keys(visibleMessageTags).length > 0 ? `${EOL}${stringifyedLogData}` : ""]
+                    .filter(Boolean)
+                    .join("") + EOL,
+              };
+
+              return resultLogData;
+            })(),
     }),
   ],
 });
@@ -23,7 +68,7 @@ export const logger = {
   info: (logType: string, message: string, meta?: Record<string, any>) => {
     winstonLogger.info(message, { logType, ...meta });
   },
-  error: (logType: string, error: any, meta?: Record<string, any>) => {
+  error: (logType: string, error: unknown, meta?: Record<string, unknown>) => {
     const serializedError = serializeError(error);
     winstonLogger.error(serializedError.message || "Unknown error", {
       logType,
