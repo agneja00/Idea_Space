@@ -110,6 +110,9 @@ importers:
       cron:
         specifier: ^4.3.3
         version: 4.3.3
+      debug:
+        specifier: ^4.4.1
+        version: 4.4.1
       dotenv:
         specifier: ^16.6.1
         version: 16.6.1
@@ -168,6 +171,9 @@ importers:
       '@types/cron':
         specifier: ^2.4.3
         version: 2.4.3
+      '@types/debug':
+        specifier: ^4.1.12
+        version: 4.1.12
       '@types/express':
         specifier: ^4.17.23
         version: 4.17.23
@@ -1963,6 +1969,9 @@ packages:
   '@types/cron@2.4.3':
     resolution: {integrity: sha512-ViRBkoZD9Rk0hGeMdd2GHGaOaZuH9mDmwsE5/Zo53Ftwcvh7h9VJc8lIt2wdgEwS4EW5lbtTX6vlE0idCLPOyA==}
     deprecated: This is a stub types definition. cron provides its own type definitions, so you do not need this installed.
+
+  '@types/debug@4.1.12':
+    resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
 
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
@@ -6973,6 +6982,10 @@ snapshots:
   '@types/cron@2.4.3':
     dependencies:
       cron: 4.3.3
+
+  '@types/debug@4.1.12':
+    dependencies:
+      '@types/ms': 2.1.0
 
   '@types/estree@1.0.8': {}
 
