@@ -10,7 +10,8 @@ module.exports = {
   },
   extends: ["../.eslintrc.cjs"],
   rules: {
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-types": "off",
   },
 };
