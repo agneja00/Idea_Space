@@ -7,45 +7,37 @@ import svgr from "vite-plugin-svgr";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const publicEnv = Object.entries(env).reduce((acc, [key, value]) => {
-    if (key.startsWith("VITE_") || ["NODE_ENV", "HOST_ENV", "SOURCE_VERSION"].includes(key)) {
-      return {
-        ...acc,
-        [key]: value,
-      };
-    }
-    return acc;
-  }, {});
+  const publicEnv = Object.fromEntries(
+    Object.entries(env).filter(
+      ([key]) => key.startsWith("VITE_") || ["NODE_ENV", "HOST_ENV", "SOURCE_VERSION"].includes(key),
+    ),
+  );
 
   if (env.HOST_ENV !== "local") {
-    if (!env.SENTRY_AUTH_TOKEN) {
-      throw new Error("SENTRY_AUTH_TOKEN is not defined");
-    }
-    if (!env.SOURCE_VERSION) {
-      throw new Error("SOURCE_VERSION is not defined");
-    }
+    if (!env.SENTRY_AUTH_TOKEN) throw new Error("SENTRY_AUTH_TOKEN is not defined");
+    if (!env.SOURCE_VERSION) throw new Error("SOURCE_VERSION is not defined");
   }
 
-  return {
-    plugins: [
-      react(),
-      svgr(),
-      tsconfigPaths(),
-      !env.SENTRY_AUTH_TOKEN
-        ? undefined
-        : sentryVitePlugin({
+  const plugins = [
+    react(),
+    svgr(),
+    tsconfigPaths(),
+    ...(env.SENTRY_AUTH_TOKEN
+      ? [
+          sentryVitePlugin({
             org: "ideanick",
             project: "idea-space-frontend",
             authToken: env.SENTRY_AUTH_TOKEN,
             release: { name: env.SOURCE_VERSION },
-          }),
-    ],
-    build: {
-      sourcemap: true,
-    },
-    resolve: {
-      alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
-    },
+          }) as any,
+        ]
+      : []),
+  ];
+
+  return {
+    plugins,
+    build: { sourcemap: true },
+    resolve: { alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }] },
     css: {
       preprocessorOptions: {
         scss: {
@@ -58,14 +50,8 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    server: {
-      port: Number(env.PORT) || 5173,
-    },
-    preview: {
-      port: Number(env.PORT) || 5173,
-    },
-    define: {
-      "process.env": publicEnv,
-    },
+    server: { port: Number(env.PORT) || 5173 },
+    preview: { port: Number(env.PORT) || 5173 },
+    define: { "process.env": publicEnv },
   };
 });

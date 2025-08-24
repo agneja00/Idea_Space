@@ -1,13 +1,14 @@
+import { env } from "./lib/env";
 import cors from "cors";
 import express from "express";
 import { applyCron } from "./lib/cron";
 import { type AppContext, createAppContext } from "./lib/ctx";
-import { env } from "./lib/env";
 import { logger } from "./lib/logger";
 import { applyPassportToExpressApp } from "./lib/passport";
 import { applyTrpcToExpressApp } from "./lib/trpc";
 import { trpcRouter } from "./router";
 import { presetDb } from "./scripts/presetDb";
+import { sentryCaptureException } from "./lib/sentry";
 
 void (async () => {
   let ctx: AppContext | null = null;
@@ -22,19 +23,27 @@ void (async () => {
     applyPassportToExpressApp(expressApp, ctx);
     await applyTrpcToExpressApp(expressApp, ctx, trpcRouter);
     applyCron(ctx);
+
     expressApp.use((error: unknown, req: express.Request, res: express.Response, next: express.NextFunction) => {
       logger.error("express", error);
+      if (error instanceof Error) {
+        sentryCaptureException(error, { route: req.url, method: req.method });
+      }
       if (res.headersSent) {
         next(error);
         return;
       }
       res.status(500).send("Internal server error");
     });
+
     expressApp.listen(env.PORT, () => {
       logger.info("express", `Listening at http://localhost:${env.PORT}`);
     });
   } catch (error) {
     logger.error("app", error);
+    if (error instanceof Error) {
+      sentryCaptureException(error);
+    }
     await ctx?.stop();
   }
 })();

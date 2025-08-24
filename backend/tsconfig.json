@@ -4,17 +4,19 @@
     "rootDir": "../",
     "module": "commonjs",
     "target": "es2020",
-    "esModuleInterop": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
+    "sourceMap": true,
+    "sourceRoot": "/",
     "baseUrl": ".",
     "paths": {
       "@ideanick/webapp/*": ["../webapp/*"],
       "@ideanick/shared/*": ["../shared/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "../frontend"]
 }
