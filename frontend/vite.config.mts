@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
     ...(env.SENTRY_AUTH_TOKEN
       ? [
           sentryVitePlugin({
-            org: "ideanick",
+            org: "ideanickk",
             project: "idea-space-frontend",
             authToken: env.SENTRY_AUTH_TOKEN,
             release: { name: env.SOURCE_VERSION },
