@@ -6,6 +6,7 @@
     "b": "pnpm --filter @ideanick/backend",
     "w": "pnpm --filter @ideanick/frontend",
     "dev": "ts-node-dev --watch ./src/emails/dist,./.env --rs --exit-child ./src/index.ts",
+    "test": "jest",
     "build-emails": "shx rm -rf ./src/emails/dist && shx mkdir -p ./src/emails/dist && mjml ./src/emails/*.mjml -o ./src/emails/dist",
     "watch-emails": "mjml -w ./src/emails/*.mjml -o ./src/emails/dist",
     "copy-emails": "copyfiles ./src/emails/dist/*.html ./dist/backend",

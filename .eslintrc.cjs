@@ -9,7 +9,7 @@ module.exports = {
     ecmaVersion: 2023,
     sourceType: "module",
   },
-  extends: ["eslint:recommended"],
+  extends: ["eslint:recommended", "plugin:jest/recommended"],
   rules: {
     "no-console": "warn",
     semi: ["error", "always"],
@@ -20,7 +20,7 @@ module.exports = {
       files: ["*.ts", "*.tsx"],
       parser: "@typescript-eslint/parser",
       extends: ["plugin:@typescript-eslint/recommended"],
-      plugins: ["@typescript-eslint"],
+      plugins: ["@typescript-eslint", "jest"],
       rules: {},
     },
   ],
