@@ -10,7 +10,7 @@
     "build-emails": "shx rm -rf ./src/emails/dist && shx mkdir -p ./src/emails/dist && mjml ./src/emails/*.mjml -o ./src/emails/dist",
     "watch-emails": "mjml -w ./src/emails/*.mjml -o ./src/emails/dist",
     "copy-emails": "copyfiles ./src/emails/dist/*.html ./dist/backend",
-    "build-ts": "rimraf ./dist && tsc --build ./tsconfig.json",
+    "build-ts": "rimraf ./dist && tsc --build ./tsconfig.build.json",
     "build": "pnpm build-ts && pnpm build-emails && pnpm copy-emails",
     "sentry-release": "cross-env NODE_ENV=production SOURCE_VERSION=%npm_package_version% BACKEND_SENTRY_DSN=%BACKEND_SENTRY_DSN% SENTRY_AUTH_TOKEN=%SENTRY_AUTH_TOKEN% sentry-cli releases new %SOURCE_VERSION% --finalize --org ideanickk --project idea-space-backend --auth-token %SENTRY_AUTH_TOKEN%",
     "sentry-sourcemaps": "cross-env NODE_ENV=production SOURCE_VERSION=%npm_package_version% BACKEND_SENTRY_DSN=%BACKEND_SENTRY_DSN% SENTRY_AUTH_TOKEN=%SENTRY_AUTH_TOKEN% sentry-cli releases files %SOURCE_VERSION% upload-sourcemaps ./dist --org ideanickk --project idea-space-backend --auth-token %SENTRY_AUTH_TOKEN%",
