@@ -3,9 +3,9 @@ import path from "path";
 import { env } from "./env";
 import type { LoggerMetaData } from "./logger";
 
-const SENTRY_ENABLED = Boolean(env.BACKEND_SENTRY_DSN && env.SOURCE_VERSION);
+const isSentryEnabled = env.BACKEND_SENTRY_DSN && env.NODE_ENV !== "test";
 
-if (SENTRY_ENABLED) {
+if (isSentryEnabled) {
   Sentry.init({
     dsn: env.BACKEND_SENTRY_DSN,
     environment: env.HOST_ENV,
@@ -20,11 +20,11 @@ if (SENTRY_ENABLED) {
 }
 
 export const sentryCaptureException = (error: Error, extraData?: LoggerMetaData) => {
-  if (!SENTRY_ENABLED) return;
+  if (!isSentryEnabled) return;
   Sentry.captureException(error, { extra: extraData });
 };
 
 export const sentryFlush = async (timeoutMs = 2000) => {
-  if (!SENTRY_ENABLED) return;
+  if (!isSentryEnabled) return;
   await Sentry.flush(timeoutMs);
 };
