@@ -1,4 +1,5 @@
 import { EOL } from "os";
+import { omit } from "@ideanick/shared/src/omit";
 import { TRPCError } from "@trpc/server";
 import debug from "debug";
 import _ from "lodash";
@@ -42,7 +43,7 @@ export const winstonLogger = winston.createLogger({
               const levelAndType = `${level} ${logData.logType ?? ""}`;
               const topMessage = `${setColor(levelAndType)} ${pc.green(timestamp)}${EOL}${message}`;
 
-              const visibleMessageTags = _.omit(logData, [
+              const visibleMessageTags = omit(logData, [
                 "level",
                 "logType",
                 "timestamp",
