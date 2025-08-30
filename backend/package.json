@@ -36,6 +36,7 @@
     "@sentry/node": "^10.8.0",
     "@sentry/types": "^10.8.0",
     "@trpc/server": "^11.4.2",
+    "cloudinary": "^2.7.0",
     "cors": "^2.8.5",
     "cron": "^4.3.3",
     "date-fns": "^4.1.0",

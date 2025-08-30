@@ -14,6 +14,7 @@ model User {
   password    String
   createdAt   DateTime         @default(now())
   name        String           @default("")
+  avatar      String?
   permissions UserPermission[]
   email       String           @unique
   ideas       Idea[]
