@@ -47,7 +47,7 @@ export const getCloudinaryUploadUrl = <TTypeName extends CloudinaryUploadTypeNam
 export const getAvatarUrl = (
   publicId: string | null | undefined,
   preset: keyof CloudinaryUploadTypes["avatar"]["presets"],
-): string | undefined => {
-  if (!publicId) return undefined;
-  return getCloudinaryUploadUrl(publicId, "avatar", preset);
-};
+) =>
+  publicId
+    ? getCloudinaryUploadUrl(publicId, "avatar", preset)
+    : getCloudinaryUploadUrl("v1757599591/avatar.jpg", "avatar", preset);
