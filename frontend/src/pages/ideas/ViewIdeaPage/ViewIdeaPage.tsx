@@ -1,8 +1,9 @@
 import type { TrpcRouterOutput } from "@ideanick/backend/src/router";
-import { canBlockIdeas, canEditIdea } from "@ideanick/backend/src/utils/can";
-import { getAvatarUrl } from "@ideanick/shared/src/cloudinary";
-import { format } from "date-fns/format";
 import css from "./ViewIdeaPage.module.scss";
+import { canBlockIdeas, canEditIdea } from "@ideanick/backend/src/utils/can";
+import { getAvatarUrl, getCloudinaryUploadUrl } from "@ideanick/shared/src/cloudinary";
+import { format } from "date-fns/format";
+import ImageGallery from "react-image-gallery";
 import { Segment } from "../../../components/Segment/Segment";
 import { withPageWrapper } from "../../../lib/pageWrapper";
 import { Alert } from "../../../components/Alert/Alert";
@@ -92,6 +93,18 @@ export const ViewIdeaPage = withPageWrapper({
         {idea.author.name ? ` (${idea.author.name})` : ""}
       </div>
     </div>
+    {!!idea.images.length && (
+      <div className={css.gallery}>
+        <ImageGallery
+          showPlayButton={false}
+          showFullscreenButton={false}
+          items={idea.images.map((image) => ({
+            original: getCloudinaryUploadUrl(image, "image", "large"),
+            thumbnail: getCloudinaryUploadUrl(image, "image", "preview"),
+          }))}
+        />
+      </div>
+    )}
     <div className={css.text} dangerouslySetInnerHTML={{ __html: idea.text }} />
     <div className={css.likes}>
       Likes: {idea.likesCount}
