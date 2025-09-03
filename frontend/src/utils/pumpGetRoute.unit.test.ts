@@ -1,7 +1,7 @@
-process.env.WEBAPP_URL = "https://example.com";
-
+import { sharedEnv } from "@ideanick/shared/src/env";
 import { pgr } from "./pumpGetRoute";
 
+sharedEnv.WEBAPP_URL = "https://example.com";
 describe("pgr", () => {
   it("return simple route", () => {
     const getSimpleRoute = pgr(() => "/simple");

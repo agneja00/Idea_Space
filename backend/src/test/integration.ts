@@ -1,6 +1,3 @@
-import "../lib/emails/utils.mock";
-import "../lib/sentry.mock";
-
 import { omit } from "@ideanick/shared/src/omit";
 import { type Idea, type User } from "@prisma/client";
 import _ from "lodash";
