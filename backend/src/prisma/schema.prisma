@@ -29,6 +29,7 @@ model Idea {
   text         String
   images       String[]
   certificate  String?
+  documents    String[]
   createdAt    DateTime   @default(now())
   authorId     String
   serialNumber Int        @unique @default(autoincrement())

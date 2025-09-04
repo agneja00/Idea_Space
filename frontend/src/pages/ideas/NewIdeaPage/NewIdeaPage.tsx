@@ -10,6 +10,7 @@ import { UploadToS3 } from "../../../components/UploadToS3/UploadToS3";
 import { useForm } from "../../../lib/form";
 import { withPageWrapper } from "../../../lib/pageWrapper";
 import { trpc } from "../../../lib/trpc";
+import { UploadsToS3 } from "../../../components/UploadsToS3/UploadsToS3";
 
 export const NewIdeaPage = withPageWrapper({
   authorizedOnly: true,
@@ -24,6 +25,7 @@ export const NewIdeaPage = withPageWrapper({
       text: "",
       images: [],
       certificate: "",
+      documents: [],
     },
 
     validationSchema: zCreateIdeaTrpcInput,
@@ -51,6 +53,7 @@ export const NewIdeaPage = withPageWrapper({
           <Textarea name="text" label="Text" formik={formik} />
           <UploadsToCloudinary label="Images" name="images" type="image" preset="preview" formik={formik} />
           <UploadToS3 label="Certificate" name="certificate" formik={formik} />
+          <UploadsToS3 label="Documents" name="documents" formik={formik} />
           <Alert {...alertProps} />
           <Button {...buttonProps}>Create Idea</Button>
         </FormItems>
