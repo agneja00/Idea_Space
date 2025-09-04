@@ -28,6 +28,7 @@ model Idea {
   description  String
   text         String
   images       String[]
+  certificate  String?
   createdAt    DateTime   @default(now())
   authorId     String
   serialNumber Int        @unique @default(autoincrement())

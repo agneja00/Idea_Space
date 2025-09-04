@@ -28,6 +28,8 @@
     "schema": "./src/prisma/schema.prisma"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.886.0",
+    "@aws-sdk/s3-request-presigner": "^3.886.0",
     "@ideanick/frontend": "workspace:*",
     "@ideanick/shared": "workspace:*",
     "@prisma/client": "^6.12.0",
@@ -50,6 +52,7 @@
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "picocolors": "^1.1.1",
+    "randomstring": "^1.3.1",
     "serialize-error": "8.1.0",
     "superjson": "^1.13.3",
     "triple-beam": "^1.4.1",
@@ -69,6 +72,7 @@
     "@types/node": "^24.0.4",
     "@types/passport": "^1.0.17",
     "@types/passport-jwt": "^4.0.1",
+    "@types/randomstring": "^1.3.0",
     "@types/triple-beam": "^1.3.5",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",

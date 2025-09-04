@@ -84,6 +84,7 @@ const prettifyMeta = (meta: LoggerMetaData): LoggerMetaData => {
         "description",
         "apiKey",
         "signature",
+        "signedUrl",
       ].includes(key)
     ) {
       return "🙈";
