@@ -13,7 +13,7 @@
     "sourceRoot": "/",
     "baseUrl": ".",
     "paths": {
-      "@ideanick/webapp/*": ["../webapp/*"],
+      "@ideanick/frontend/*": ["../frontend/*"],
       "@ideanick/shared/*": ["../shared/*"]
     }
   },
