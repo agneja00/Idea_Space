@@ -11,5 +11,5 @@
     "esModuleInterop": true,
     "types": ["node", "jest"]
   },
-  "include": ["vite.config.mts"]
+  "include": ["vite.config.mts", "src/lib/parsePublicEnv.ts"]
 }

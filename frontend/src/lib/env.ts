@@ -13,4 +13,6 @@ export const zEnv = z.object({
   VITE_MIXPANEL_API_KEY: zEnvNonemptyTrimmedRequiredOnNotLocal,
 });
 
-export const env = zEnv.parse(process.env);
+const envFromBackend = (window as any).webappEnvFromBackend;
+
+export const env = zEnv.parse(envFromBackend?.replaceMeWithPublicEnv ? process.env : envFromBackend);

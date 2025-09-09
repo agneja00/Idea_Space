@@ -4,14 +4,11 @@ import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
 import svgr from "vite-plugin-svgr";
+import { parsePublicEnv } from "./src/lib/parsePublicEnv";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const publicEnv = Object.fromEntries(
-    Object.entries(env).filter(
-      ([key]) => key.startsWith("VITE_") || ["NODE_ENV", "HOST_ENV", "SOURCE_VERSION"].includes(key),
-    ),
-  );
+  const publicEnv = parsePublicEnv(env);
 
   if (env.HOST_ENV !== "local") {
     if (!env.SENTRY_AUTH_TOKEN) throw new Error("SENTRY_AUTH_TOKEN is not defined");
