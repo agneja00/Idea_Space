@@ -11,15 +11,19 @@ export default defineConfig(({ mode }) => {
   const publicEnv = parsePublicEnv(env);
 
   if (env.HOST_ENV !== "local") {
-    if (!env.SENTRY_AUTH_TOKEN) throw new Error("SENTRY_AUTH_TOKEN is not defined");
-    if (!env.SOURCE_VERSION) throw new Error("SOURCE_VERSION is not defined");
+    if (!env.SENTRY_AUTH_TOKEN) {
+      console.warn("⚠️ SENTRY_AUTH_TOKEN is missing – Sentry plugin disabled.");
+    }
+    if (!env.SOURCE_VERSION) {
+      console.warn("⚠️ SOURCE_VERSION is missing – release version not set.");
+    }
   }
 
   const plugins = [
     react(),
     svgr(),
     tsconfigPaths(),
-    ...(env.SENTRY_AUTH_TOKEN
+    ...(env.SENTRY_AUTH_TOKEN && env.SOURCE_VERSION
       ? [
           sentryVitePlugin({
             org: "ideanickk",

@@ -44,6 +44,8 @@ const customTrpcLink: TRPCLink<TrpcRouter> = () => {
   };
 };
 
+const backendUrl = import.meta.env.PROD ? "/trpc" : env.VITE_BACKEND_TRPC_URL;
+
 const trpcClient = trpc.createClient({
   links: [
     customTrpcLink,
@@ -51,7 +53,7 @@ const trpcClient = trpc.createClient({
       enabled: () => env.NODE_ENV === "development",
     }),
     httpBatchLink({
-      url: env.VITE_BACKEND_TRPC_URL,
+      url: backendUrl,
       transformer: superjson,
       headers: () => {
         const token = Cookies.get("token");
