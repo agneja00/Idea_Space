@@ -37,7 +37,7 @@ const zEnv = z.object({
     const [databaseUrl] = val.split("?");
     const [databaseName] = databaseUrl.split("/").reverse();
     return databaseName.endsWith("-test");
-  }, 'Data base name should ends with "-test" on test environment'),
+  }, "Data base name should ends with \"-test\" on test environment"),
   JWT_SECRET: zEnvNonemptyTrimmed,
   PASSWORD_SALT: zEnvNonemptyTrimmed,
   INITIAL_ADMIN_PASSWORD: zEnvNonemptyTrimmed,
