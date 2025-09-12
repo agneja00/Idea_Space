@@ -14,9 +14,8 @@
     "dcc": "dotenv -e ./.env.docker -e ./backend/.env -e ./frontend/.env -- docker compose config",
     "dcb": "dotenv -e ./.env.docker -e ./backend/.env -e ./frontend/.env -- docker-compose build",
     "dcu": "dotenv -e ./.env.docker -e ./backend/.env -e ./frontend/.env -- docker-compose up",
-    "dth": "docker tag ideanick-image registry.heroku.com/ideaspace/web",
+    "dth": "docker buildx build --platform=linux/amd64 -t registry.heroku.com/ideaspace/web:latest --push --provenance=false --sbom=false .",
     "hl": "heroku login && heroku container:login",
-    "dph": "docker push registry.heroku.com/ideaspace/web",
     "hr": "heroku container:release web -a ideaspace",
     "prepare": "husky install"
   },
