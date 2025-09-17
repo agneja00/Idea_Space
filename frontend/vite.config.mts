@@ -2,6 +2,7 @@ import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { defineConfig, loadEnv } from "vite";
 import legacy from "@vitejs/plugin-legacy";
 import react from "@vitejs/plugin-react";
+import autoprefixer from "autoprefixer";
 import { visualizer } from "rollup-plugin-visualizer";
 import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
@@ -24,16 +25,16 @@ export default defineConfig(({ mode }) => {
   const plugins = [
     react(),
     svgr(),
-    legacy({
-      targets: ["> 0.01%"],
-    }),
-    env.HOST_ENV !== "local"
-      ? undefined
-      : visualizer({
-          filename: "./dist/bundle-stats.html",
-          gzipSize: true,
-          brotliSize: true,
-        }),
+    legacy({ targets: ["> 0.01%"] }),
+    ...(env.HOST_ENV === "local"
+      ? [
+          visualizer({
+            filename: "./dist/bundle-stats.html",
+            gzipSize: true,
+            brotliSize: true,
+          }),
+        ]
+      : []),
     tsconfigPaths(),
     ...(env.SENTRY_AUTH_TOKEN && env.SOURCE_VERSION
       ? [
@@ -49,9 +50,13 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins,
-    build: { sourcemap: true, chunkSizeWarningLimit: 900 },
-    resolve: { alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }] },
+    resolve: {
+      alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
+    },
     css: {
+      postcss: {
+        plugins: [autoprefixer()],
+      },
       preprocessorOptions: {
         scss: {
           additionalData: `
@@ -63,8 +68,20 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    server: { port: Number(env.PORT) || 5173 },
-    preview: { port: Number(env.PORT) || 5173 },
-    define: { "process.env": publicEnv },
+    build: {
+      sourcemap: true,
+      chunkSizeWarningLimit: 900,
+    },
+    server: {
+      port: Number(env.PORT) || 5173,
+      host: true,
+    },
+    preview: {
+      port: Number(env.PORT) || 5173,
+      host: true,
+    },
+    define: {
+      "process.env": publicEnv,
+    },
   };
 });
