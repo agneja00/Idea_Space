@@ -1,10 +1,10 @@
+import { env } from "./env";
 import type { TrpcRouter } from "@ideanick/backend/src/router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink, loggerLink, type TRPCLink } from "@trpc/client";
 import { createTRPCReact, type CreateTRPCReact } from "@trpc/react-query";
 import Cookies from "js-cookie";
 import superjson from "superjson";
-import { env } from "./env";
 import { sentryCaptureException } from "./sentry";
 import { observable } from "@trpc/server/observable";
 
