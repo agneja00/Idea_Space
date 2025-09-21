@@ -73,11 +73,11 @@ export default defineConfig(({ mode }) => {
       chunkSizeWarningLimit: 900,
     },
     server: {
-      port: Number(env.PORT) || 5173,
+      port: Number(env.PORT) || 8001,
       host: true,
     },
     preview: {
-      port: Number(env.PORT) || 5173,
+      port: Number(env.PORT) || 8001,
       host: true,
     },
     define: {
