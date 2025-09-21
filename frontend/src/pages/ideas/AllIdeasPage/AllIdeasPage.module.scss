@@ -1,15 +1,15 @@
 .filter {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .ideas {
   .idea {
-    padding: 20px;
+    padding: 1.25rem;
     border: 1px solid $black;
-    border-radius: 10px;
+    border-radius: 0.625rem;
 
     & + .idea {
-      margin-top: 20px;
+      margin-top: 1.25rem;
     }
 
     .ideaLink {
@@ -18,6 +18,6 @@
   }
 
   .more {
-    margin-top: 15px;
+    margin-top: 0.938rem;
   }
 }

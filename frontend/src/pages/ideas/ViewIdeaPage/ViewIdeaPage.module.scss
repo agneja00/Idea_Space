@@ -1,36 +1,36 @@
 .createdAt {
-  font-size: 12px;
-  margin-bottom: 10px;
+  font-size: 0.75rem;
+  margin-bottom: 0.625rem;
 }
 
 .author {
   display: flex;
   flex-flow: row nowrap;
-  margin: 10px 0;
+  margin: 0.625rem 0;
   align-items: center;
 
   .avatar {
-    flex: 0 0 100px;
-    width: 100px;
-    height: 100px;
+    flex: 0 0 6.25rem;
+    width: 6.25rem;
+    height: 6.25rem;
     border-radius: 50%;
   }
 
   .name {
     flex: 1 1 100%;
     font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 20px;
-    margin-left: 10px;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    margin-left: 0.625rem;
   }
 }
 
 .gallery {
-  margin: 10px 0;
+  margin: 0.625rem 0;
 }
 
 .certificate {
-  margin: 10px 0;
+  margin: 0.625rem 0;
 
   .certificateLink {
     @include link;
@@ -38,7 +38,7 @@
 }
 
 .documents {
-  margin: 10px 0;
+  margin: 0.625rem 0;
 
   .documentLink {
     @include link;
@@ -46,25 +46,31 @@
 }
 
 .text {
-  font-size: 14px;
+  font-size: 0.875rem;
 
   & > *:not(:first-child) {
-    margin-top: 10px;
+    margin-top: 0.625rem;
   }
 }
 
 .likes {
-  margin-top: 20px;
+  margin-top: 1.25rem;
+
+  .likesCount {
+    color: #001eff;
+    font-weight: bold;
+  }
 
   .likeButton {
     @include link;
+    margin-top: 0.5rem;
   }
 }
 
 .editButton {
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .blockIdea {
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }

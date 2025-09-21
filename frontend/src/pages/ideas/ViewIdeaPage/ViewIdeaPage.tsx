@@ -150,7 +150,7 @@ export const ViewIdeaPage = withPageWrapper({
     )}
     <div className={css.text} dangerouslySetInnerHTML={{ __html: idea.text }} />
     <div className={css.likes}>
-      Likes: {idea.likesCount}
+      Likes: <span className={css.likesCount}>{idea.likesCount}</span>
       {me && (
         <>
           <br />

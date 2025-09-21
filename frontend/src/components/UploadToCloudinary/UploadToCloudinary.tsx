@@ -1,4 +1,5 @@
 import css from "./UploadToCloudinary.module.scss";
+import cssShared from "../Input/Input.module.scss";
 import {
   getCloudinaryUploadUrl,
   type CloudinaryUploadPresetName,
@@ -113,7 +114,7 @@ export const UploadToCloudinary = <TTypeName extends CloudinaryUploadTypeName>({
           })();
         }}
       />
-      <label className={css.label} htmlFor={name}>
+      <label className={cssShared.label} htmlFor={name}>
         {label}
       </label>
       {!!value && !loading && (
@@ -133,7 +134,7 @@ export const UploadToCloudinary = <TTypeName extends CloudinaryUploadTypeName>({
             onClick={() => inputEl.current?.click()}
             loading={loading}
             disabled={loading || disabled}
-            color="green"
+            color="blue"
           >
             {value ? "Upload another" : "Upload"}
           </Button>

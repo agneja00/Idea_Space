@@ -1,4 +1,5 @@
 import css from "./UploadToS3.module.scss";
+import cssShared from "../Input/Input.module.scss";
 import { getS3UploadUrl, getS3UploadName } from "@ideanick/shared/src/s3";
 import cn from "classnames";
 import { type FormikProps } from "formik";
@@ -73,7 +74,7 @@ export const UploadToS3 = ({ label, name, formik }: { label: string; name: strin
           })();
         }}
       />
-      <label className={css.label} htmlFor={name}>
+      <label className={cssShared.label} htmlFor={name}>
         {label}
       </label>
       {!!value && !loading && (
@@ -92,7 +93,7 @@ export const UploadToS3 = ({ label, name, formik }: { label: string; name: strin
             onClick={() => inputEl.current?.click()}
             loading={loading}
             disabled={loading || disabled}
-            color="green"
+            color="blue"
           >
             {value ? "Upload another" : "Upload"}
           </Button>

@@ -34,6 +34,18 @@
     }
   }
 
+  &.color-blue {
+    background-color: #007bff;
+
+    &:hover {
+      background-color: #3399ff;
+    }
+
+    &:active {
+      background-color: #66b3ff;
+    }
+  }
+
   &.disabled {
     pointer-events: none;
     background-color: #929292;

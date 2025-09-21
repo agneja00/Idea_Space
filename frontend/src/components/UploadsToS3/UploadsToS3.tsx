@@ -1,4 +1,5 @@
 import css from "./UploadsToS3.module.scss";
+import cssShared from "../Input/Input.module.scss";
 import { getS3UploadName, getS3UploadUrl } from "@ideanick/shared/src/s3";
 import cn from "classnames";
 import { type FormikProps } from "formik";
@@ -22,7 +23,7 @@ export const UploadsToS3 = ({ label, name, formik }: { label: string; name: stri
   return (
     <div className={cn({ [css.field]: true, [css.disabled]: disabled })}>
       <input
-        className={css.fileInput}
+        style={{ display: "none" }}
         type="file"
         disabled={loading || disabled}
         accept="*"
@@ -56,7 +57,7 @@ export const UploadsToS3 = ({ label, name, formik }: { label: string; name: stri
           })();
         }}
       />
-      <label className={css.label} htmlFor={name}>
+      <label className={cssShared.label} htmlFor={name}>
         {label}
       </label>
       {!!value?.length && (
@@ -88,7 +89,7 @@ export const UploadsToS3 = ({ label, name, formik }: { label: string; name: stri
           onClick={() => inputEl.current?.click()}
           loading={loading}
           disabled={loading || disabled}
-          color="green"
+          color="blue"
         >
           {value ? "Upload more" : "Upload"}
         </Button>

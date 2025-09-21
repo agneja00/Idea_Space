@@ -1,8 +1,10 @@
 .field {
   .uploads {
     .upload {
+      margin: 0.5rem 0;
+
       & + .upload {
-        margin-top: 3px;
+        margin: 0.5rem 0;
       }
 
       .delete {
