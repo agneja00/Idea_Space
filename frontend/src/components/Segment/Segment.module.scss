@@ -8,15 +8,15 @@
   }
 
   .description {
-    font-size: 18px;
-    margin-top: 5px;
+    font-size: 1.125rem;
+    margin-top: 0.313rem;
   }
 
   .content {
-    margin-top: 12px;
+    margin-top: 0.75rem;
   }
 
   & + .segment {
-    margin-top: 40px;
+    margin-top: 2.5rem;
   }
 }

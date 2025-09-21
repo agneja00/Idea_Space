@@ -6,13 +6,13 @@
   .previewPlace {
     position: relative;
     box-sizing: content-box;
-    width: 100px;
-    height: 100px;
-    padding: 10px;
+    width: 6.25rem;
+    height: 6.25rem;
+    padding: 0.625rem;
     border: 1px solid $gray;
     background-color: $grayLight;
     border-radius: $borderRadiusSmall;
-    margin-bottom: 5px;
+    margin-bottom: 0.313rem;
     display: flex;
     align-items: center;
     justify-content: center;

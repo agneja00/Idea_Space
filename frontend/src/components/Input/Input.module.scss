@@ -5,19 +5,19 @@
 
   .label {
     font-weight: bold;
-    margin-bottom: 2px;
+    margin-bottom: 0.125rem;
     display: block;
   }
 
   .input {
     display: block;
-    padding: 7px;
+    padding: 0.438rem;
     border: 1px solid $black;
     border-radius: $borderRadiusSmall;
     background-color: $white;
     outline: none;
     width: 100%;
-    max-width: 200px;
+    max-width: 12.5rem;
 
     &:focus {
       border-color: $blue;
@@ -29,14 +29,14 @@
   }
 
   .textarea {
-    min-height: 150px;
+    min-height: 9.375rem;
     width: 100%;
     max-width: none;
     resize: vertical;
   }
 
   .error {
-    margin-top: 2px;
+    margin-top: 0.125rem;
     color: $red;
   }
 }

@@ -11,7 +11,7 @@ $breakpoint: "<=900px";
   .navigation {
     height: 100%;
     overflow: auto;
-    flex: 0 0 200px;
+    flex: 0 0 12.5rem;
     padding: 20px 30px;
     border-right: 1px solid $black;
     @include media($breakpoint) {
@@ -23,17 +23,17 @@ $breakpoint: "<=900px";
     }
 
     .logo {
-      padding-top: 2px;
+      padding-top: 0.125rem;
       width: 100%;
-      max-width: 130px;
+      max-width: 8.125rem;
       height: auto;
-      margin-bottom: 15px;
+      margin-bottom: 0.938rem;
     }
 
     .menu {
       .item {
         &:not(:first-child) {
-          margin-top: 5px;
+          margin-top: 0.313rem;
         }
 
         .link {
@@ -47,7 +47,7 @@ $breakpoint: "<=900px";
     height: 100%;
     overflow: auto;
     flex: 1 1 100%;
-    padding: 20px 30px;
+    padding: 1.25rem 1.875rem;
     @include media($breakpoint) {
       overflow: visible;
       height: auto;
