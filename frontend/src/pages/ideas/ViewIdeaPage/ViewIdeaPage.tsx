@@ -94,7 +94,12 @@ export const ViewIdeaPage = withPageWrapper({
   <Segment title={idea.name} description={idea.description}>
     <div className={css.createdAt}>Created At: {format(idea.createdAt, "yyyy-MM-dd")}</div>
     <div className={css.author}>
-      <img className={css.avatar} alt="" src={getAvatarUrl(idea?.author?.avatar, "small")} />
+      <img
+        className={css.avatar}
+        alt={`Avatar of ${idea.author.nick}`}
+        src={getAvatarUrl(idea?.author?.avatar, "small")}
+        loading="lazy"
+      />
       <div className={css.name}>
         Author:
         <br />
@@ -107,9 +112,11 @@ export const ViewIdeaPage = withPageWrapper({
         <ImageGallery
           showPlayButton={false}
           showFullscreenButton={false}
-          items={idea.images.map((image) => ({
+          items={idea.images.map((image, index) => ({
             original: getCloudinaryUploadUrl(image, "image", "large"),
             thumbnail: getCloudinaryUploadUrl(image, "image", "preview"),
+            originalAlt: `Idea image ${index + 1}`,
+            thumbnailAlt: `Idea thumbnail ${index + 1}`,
           }))}
         />
       </div>

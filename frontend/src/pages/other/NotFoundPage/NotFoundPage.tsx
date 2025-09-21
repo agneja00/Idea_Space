@@ -10,6 +10,13 @@ export const NotFoundPage = ({
   message?: string;
 }) => (
   <ErrorPageComponent title={title} message={message}>
-    <img src={image404} className={css.image} alt="" width="800" height="600" />
+    <img
+      src={image404}
+      className={css.image}
+      alt="404 not found illustration"
+      width="800"
+      height="600"
+      loading="lazy"
+    />
   </ErrorPageComponent>
 );

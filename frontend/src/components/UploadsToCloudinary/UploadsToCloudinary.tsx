@@ -77,7 +77,7 @@ export const UploadsToCloudinary = <TTypeName extends CloudinaryUploadTypeName>(
       </label>
       {!!value?.length && (
         <div className={css.previews}>
-          {value.map((publicId) => (
+          {value.map((publicId, index) => (
             <div key={publicId} className={css.previewPlace}>
               <button
                 type="button"
@@ -91,7 +91,12 @@ export const UploadsToCloudinary = <TTypeName extends CloudinaryUploadTypeName>(
               >
                 <Icon className={css.deleteIcon} name="delete" />
               </button>
-              <img className={css.preview} alt="" src={getCloudinaryUploadUrl(publicId, type, preset)} />
+              <img
+                className={css.preview}
+                alt={`Uploaded preview ${index + 1}`}
+                src={getCloudinaryUploadUrl(publicId, type, preset)}
+                loading="lazy"
+              />
             </div>
           ))}
         </div>

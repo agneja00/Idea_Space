@@ -118,7 +118,12 @@ export const UploadToCloudinary = <TTypeName extends CloudinaryUploadTypeName>({
       </label>
       {!!value && !loading && (
         <div className={css.previewPlace}>
-          <img className={css.preview} alt="" src={getCloudinaryUploadUrl(value, type, preset)} />
+          <img
+            className={css.preview}
+            alt="Uploaded image preview"
+            src={getCloudinaryUploadUrl(value, type, preset)}
+            loading="lazy"
+          />
         </div>
       )}
       <div className={css.buttons}>
