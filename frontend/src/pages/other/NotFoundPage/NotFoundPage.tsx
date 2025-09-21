@@ -16,7 +16,7 @@ export const NotFoundPage = ({
       alt="404 not found illustration"
       width="800"
       height="600"
-      loading="lazy"
+      loading="eager"
     />
   </ErrorPageComponent>
 );

@@ -2,41 +2,41 @@
   &.disabled {
     opacity: 0.5;
   }
+}
 
-  .label {
-    font-weight: bold;
-    margin-bottom: 0.125rem;
-    display: block;
+.label {
+  font-weight: bold;
+  margin-bottom: 5rem;
+  display: block;
+}
+
+.input {
+  display: block;
+  padding: 0.438rem;
+  border: 1px solid $black;
+  border-radius: $borderRadiusSmall;
+  background-color: $white;
+  outline: none;
+  width: 100%;
+  max-width: 12.5rem;
+
+  &:focus {
+    border-color: $blue;
   }
 
-  .input {
-    display: block;
-    padding: 0.438rem;
-    border: 1px solid $black;
-    border-radius: $borderRadiusSmall;
-    background-color: $white;
-    outline: none;
-    width: 100%;
-    max-width: 12.5rem;
-
-    &:focus {
-      border-color: $blue;
-    }
-
-    &.invalid {
-      border-color: $red;
-    }
+  &.invalid {
+    border-color: $red;
   }
+}
 
-  .textarea {
-    min-height: 9.375rem;
-    width: 100%;
-    max-width: none;
-    resize: vertical;
-  }
+.textarea {
+  min-height: 9.375rem;
+  width: 100%;
+  max-width: none;
+  resize: vertical;
+}
 
-  .error {
-    margin-top: 0.125rem;
-    color: $red;
-  }
+.error {
+  margin-top: 0.125rem;
+  color: $red;
 }

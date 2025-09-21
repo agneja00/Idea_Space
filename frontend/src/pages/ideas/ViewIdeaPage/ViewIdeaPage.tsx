@@ -117,6 +117,12 @@ export const ViewIdeaPage = withPageWrapper({
             thumbnail: getCloudinaryUploadUrl(image, "image", "preview"),
             originalAlt: `Idea image ${index + 1}`,
             thumbnailAlt: `Idea thumbnail ${index + 1}`,
+            originalProps: {
+              loading: index === 0 ? "eager" : "lazy",
+            },
+            thumbnailProps: {
+              loading: "lazy",
+            },
           }))}
         />
       </div>
