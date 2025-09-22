@@ -20,12 +20,12 @@
 
 @mixin h1 {
   font-size: 1.875rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 @mixin h2 {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 @mixin loader($borderWidth, $size, $color) {
