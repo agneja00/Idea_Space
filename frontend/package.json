@@ -17,6 +17,7 @@
     "@ideanick/backend": "workspace:*",
     "@ideanick/shared": "workspace:*",
     "@nanostores/react": "^1.0.0",
+    "@sendgrid/mail": "^8.1.6",
     "@sentry/react": "^10.5.0",
     "@tanstack/react-query": "^5.81.5",
     "@trpc/client": "^11.4.3",

@@ -1,4 +1,4 @@
-import { sendWelcomeEmail } from "../../../lib/emails";
+import { sendWelcomeEmail } from "../../../utils/sendEmail";
 import { ExpectedError } from "../../../lib/error";
 import { trpcLoggedProcedure } from "../../../lib/trpc";
 import { getPasswordHash } from "../../../utils/getPasswordHash";

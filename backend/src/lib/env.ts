@@ -37,12 +37,11 @@ const zEnv = z.object({
     const [databaseUrl] = val.split("?");
     const [databaseName] = databaseUrl.split("/").reverse();
     return databaseName.endsWith("-test");
-  }, "Data base name should ends with \"-test\" on test environment"),
+  }, 'Data base name should ends with "-test" on test environment'),
   JWT_SECRET: zEnvNonemptyTrimmed,
   PASSWORD_SALT: zEnvNonemptyTrimmed,
   INITIAL_ADMIN_PASSWORD: zEnvNonemptyTrimmed,
   WEBAPP_URL: zEnvNonemptyTrimmed,
-  BREVO_API_KEY: zEnvNonemptyTrimmedRequiredOnNotLocal,
   FROM_EMAIL_NAME: zEnvNonemptyTrimmed,
   FROM_EMAIL_ADDRESS: zEnvNonemptyTrimmed,
   DEBUG: z
@@ -53,6 +52,7 @@ const zEnv = z.object({
       "Required on not local host on production",
     ),
   BACKEND_SENTRY_DSN: zEnvNonemptyTrimmedRequiredOnNotLocal,
+  SENDGRID_API_KEY: zEnvNonemptyTrimmedRequiredOnNotLocal,
   SOURCE_VERSION: zEnvNonemptyTrimmedRequiredOnNotLocal,
   CLOUDINARY_API_KEY: zEnvNonemptyTrimmedRequiredOnNotLocal,
   CLOUDINARY_API_SECRET: zEnvNonemptyTrimmedRequiredOnNotLocal,

@@ -7,11 +7,7 @@
     "w": "pnpm --filter @ideanick/frontend",
     "dev": "cross-env NODE_ENV=development ts-node-dev --watch ./src/emails/dist,./.env --rs --exit-child ./src/index.ts",
     "test": "jest --runInBand",
-    "build-emails": "shx rm -rf ./src/emails/dist && shx mkdir -p ./src/emails/dist && mjml ./src/emails/*.mjml -o ./src/emails/dist",
-    "watch-emails": "mjml -w ./src/emails/*.mjml -o ./src/emails/dist",
-    "copy-emails": "copyfiles ./src/emails/dist/*.html ./dist/backend",
-    "build-ts": "rimraf ./dist && tsc --build ./tsconfig.build.json && tsc-alias",
-    "build": "pnpm build-ts && pnpm build-emails && pnpm copy-emails",
+    "build": "rimraf ./dist && tsc --build ./tsconfig.build.json && tsc-alias",
     "sentry-release": "cross-env NODE_ENV=production SOURCE_VERSION=%npm_package_version% BACKEND_SENTRY_DSN=%BACKEND_SENTRY_DSN% sentry-cli releases new %SOURCE_VERSION% --finalize --org ideanickk --project idea-space-backend",
     "sentry-sourcemaps": "cross-env NODE_ENV=production SOURCE_VERSION=%npm_package_version% BACKEND_SENTRY_DSN=%BACKEND_SENTRY_DSN% sentry-cli releases files %SOURCE_VERSION% upload-sourcemaps ./dist --org ideanickk --project idea-space-backend",
     "sentry": "if [ \"$SENTRY_AUTH_TOKEN\" ]; then pnpm run sentry-release && pnpm run sentry-sourcemaps; else echo 'Skipping Sentry (no token)'; fi",
@@ -34,6 +30,7 @@
     "@ideanick/frontend": "workspace:*",
     "@ideanick/shared": "workspace:*",
     "@prisma/client": "^6.12.0",
+    "@sendgrid/mail": "^8.1.6",
     "@sentry/core": "10.8.0",
     "@sentry/integrations": "^7.114.0",
     "@sentry/node": "^10.8.0",
@@ -89,7 +86,7 @@
     "mjml": "^4.15.3",
     "prettier": "^3.6.2",
     "shx": "^0.4.0",
-    "typescript-eslint": "^8.40.0",
-    "tsc-alias": "^1.8.16"
+    "tsc-alias": "^1.8.16",
+    "typescript-eslint": "^8.40.0"
   }
 }

@@ -1,6 +1,6 @@
 import { Prisma, type Idea } from "@prisma/client";
 import { type AppContext } from "../lib/ctx";
-import { sendMostLikedIdeasEmail } from "../lib/emails";
+import { sendMostLikedIdeasEmail } from "../utils/sendEmail";
 
 export const getMostLikedIdeas = async (ctx: AppContext, limit = 10, now?: Date) => {
   const sqlNow = now ? Prisma.sql`${now.toISOString()}::timestamp` : Prisma.sql`now()`;

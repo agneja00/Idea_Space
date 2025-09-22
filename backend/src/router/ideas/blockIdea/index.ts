@@ -1,4 +1,4 @@
-import { sendIdeaBlockedEmail } from "../../../lib/emails";
+import { sendIdeaBlockedEmail } from "../../../utils/sendEmail";
 import { trpcLoggedProcedure } from "../../../lib/trpc";
 import { canBlockIdeas } from "../../../utils/can";
 import { zBlockIdeaTrpcInput } from "./input";
