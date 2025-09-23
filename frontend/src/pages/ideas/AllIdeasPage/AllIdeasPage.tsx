@@ -1,17 +1,17 @@
 import { zGetIdeasTrpcInput } from "@ideanick/backend/src/router/ideas/getIdeas/input";
 import css from "./AllIdeasPage.module.scss";
 import InfiniteScroll from "react-infinite-scroller";
-import { withPageWrapper } from "../../../lib/pageWrapper";
-import { layoutContentElRef } from "../../../components/Layout/Layout";
-import { Loader } from "../../../components/Loader/Loader";
-import { Segment } from "../../../components/Segment/Segment";
+import { withPageWrapper } from "@/lib/pageWrapper";
+import { layoutContentElRef } from "@/components/Layout/Layout";
+import { Loader } from "@/components/Loader/Loader";
+import { Segment } from "@/components/Segment/Segment";
 import { Link } from "react-router-dom";
 import { useDebounceValue } from "usehooks-ts";
-import { Alert } from "../../../components/Alert/Alert";
-import { Input } from "../../../components/Input/Input";
-import { useForm } from "../../../lib/form";
-import { getViewIdeaRoute } from "../../../lib/routes";
-import { trpc } from "../../../lib/trpc";
+import { Alert } from "@/components/Alert/Alert";
+import { Input } from "@/components/Input/Input";
+import { useForm } from "@/lib/form";
+import { getViewIdeaRoute } from "@/lib/routes";
+import { trpc } from "@/lib/trpc";
 
 export const AllIdeasPage = withPageWrapper({
   title: "IdeaNick",

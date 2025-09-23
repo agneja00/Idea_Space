@@ -1,5 +1,5 @@
 import css from "./Layout.module.scss";
-import { ReactComponent as Logo } from "../../assets/images/logo.svg";
+import { ReactComponent as Logo } from "@/assets/images/logo.svg";
 import { createRef } from "react";
 import { Link, Outlet } from "react-router-dom";
 import {
@@ -9,8 +9,8 @@ import {
   getSignInRoute,
   getSignOutRoute,
   getSignUpRoute,
-} from "../../lib/routes";
-import { useMe } from "../../lib/ctx";
+} from "@/lib/routes";
+import { useMe } from "@/lib/ctx";
 
 export const layoutContentElRef = createRef<HTMLDivElement>();
 

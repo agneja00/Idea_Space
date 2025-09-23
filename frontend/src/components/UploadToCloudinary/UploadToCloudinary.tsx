@@ -9,7 +9,7 @@ import cn from "classnames";
 import { type FormikProps } from "formik";
 import memoize from "lodash/memoize";
 import { useCallback, useRef, useState } from "react";
-import { trpc } from "../../lib/trpc";
+import { trpc } from "@/lib/trpc";
 import { Button, Buttons } from "../Button/Button";
 
 export const useUploadToCloudinary = (type: CloudinaryUploadTypeName) => {

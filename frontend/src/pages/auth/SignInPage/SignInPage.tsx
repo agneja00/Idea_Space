@@ -1,14 +1,14 @@
 import { zSignInTrpcInput } from "@ideanick/backend/src/router/auth/signIn/input";
 import Cookies from "js-cookie";
-import { Alert } from "../../../components/Alert/Alert";
-import { Button } from "../../../components/Button/Button";
-import { FormItems } from "../../../components/FormItems/FormItems";
-import { Input } from "../../../components/Input/Input";
-import { Segment } from "../../../components/Segment/Segment";
-import { useForm } from "../../../lib/form";
-import { mixpanelIdentify, mixpanelTrackSignIn } from "../../../lib/mixpanel";
-import { withPageWrapper } from "../../../lib/pageWrapper";
-import { trpc } from "../../../lib/trpc";
+import { Alert } from "@/components/Alert/Alert";
+import { Button } from "@/components/Button/Button";
+import { FormItems } from "@/components/FormItems/FormItems";
+import { Input } from "@/components/Input/Input";
+import { Segment } from "@/components/Segment/Segment";
+import { useForm } from "@/lib/form";
+import { mixpanelIdentify, mixpanelTrackSignIn } from "@/lib/mixpanel";
+import { withPageWrapper } from "@/lib/pageWrapper";
+import { trpc } from "@/lib/trpc";
 
 export const SignInPage = withPageWrapper({
   redirectAuthorized: true,

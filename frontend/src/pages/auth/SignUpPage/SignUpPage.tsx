@@ -1,15 +1,15 @@
 import { zSignUpTrpcInput } from "@ideanick/backend/src/router/auth/signUp/input";
 import { zPasswordsMustBeTheSame, zStringRequired } from "@ideanick/shared/src/zod";
 import Cookies from "js-cookie";
-import { Alert } from "../../../components/Alert/Alert";
-import { Button } from "../../../components/Button/Button";
-import { FormItems } from "../../../components/FormItems/FormItems";
-import { Input } from "../../../components/Input/Input";
-import { Segment } from "../../../components/Segment/Segment";
-import { useForm } from "../../../lib/form";
-import { mixpanelAlias, mixpanelTrackSignUp } from "../../../lib/mixpanel";
-import { withPageWrapper } from "../../../lib/pageWrapper";
-import { trpc } from "../../../lib/trpc";
+import { Alert } from "@/components/Alert/Alert";
+import { Button } from "@/components/Button/Button";
+import { FormItems } from "@/components/FormItems/FormItems";
+import { Input } from "@/components/Input/Input";
+import { Segment } from "@/components/Segment/Segment";
+import { useForm } from "@/lib/form";
+import { mixpanelAlias, mixpanelTrackSignUp } from "@/lib/mixpanel";
+import { withPageWrapper } from "@/lib/pageWrapper";
+import { trpc } from "@/lib/trpc";
 
 export const SignUpPage = withPageWrapper({
   redirectAuthorized: true,

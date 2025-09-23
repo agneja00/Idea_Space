@@ -1,6 +1,6 @@
 import css from "./NotFoundPage.module.scss";
-import { ErrorPageComponent } from "../../../components/ErrorPageComponent/ErrorPageComponent";
-import image404 from "../../../assets/images/404-not-found.png";
+import { ErrorPageComponent } from "@/components/ErrorPageComponent/ErrorPageComponent";
+import image404 from "@/assets/images/404-not-found.png";
 
 export const NotFoundPage = ({
   title = "Not Found",

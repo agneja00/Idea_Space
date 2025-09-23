@@ -4,7 +4,7 @@ import { getS3UploadUrl, getS3UploadName } from "@ideanick/shared/src/s3";
 import cn from "classnames";
 import { type FormikProps } from "formik";
 import { useRef, useState } from "react";
-import { trpc } from "../../lib/trpc";
+import { trpc } from "@/lib/trpc";
 import { Button, Buttons } from "../Button/Button";
 
 export const useUploadToS3 = () => {

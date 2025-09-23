@@ -6,16 +6,16 @@ import { getS3UploadName, getS3UploadUrl } from "@ideanick/shared/src/s3";
 import { format } from "date-fns/format";
 import { Fragment } from "react";
 import ImageGallery from "react-image-gallery";
-import { Segment } from "../../../components/Segment/Segment";
-import { withPageWrapper } from "../../../lib/pageWrapper";
-import { Alert } from "../../../components/Alert/Alert";
-import { Button, LinkButton } from "../../../components/Button/Button";
-import { FormItems } from "../../../components/FormItems/FormItems";
-import { Icon } from "../../../components/Icon/Icon";
-import { useForm } from "../../../lib/form";
-import { mixpanelSetIdeaLike } from "../../../lib/mixpanel";
-import { getEditIdeaRoute, getViewIdeaRoute } from "../../../lib/routes";
-import { trpc } from "../../../lib/trpc";
+import { Segment } from "@/components/Segment/Segment";
+import { withPageWrapper } from "@/lib/pageWrapper";
+import { Alert } from "@/components/Alert/Alert";
+import { Button, LinkButton } from "@/components/Button/Button";
+import { FormItems } from "@/components/FormItems/FormItems";
+import { Icon } from "@/components/Icon/Icon";
+import { useForm } from "@/lib/form";
+import { mixpanelSetIdeaLike } from "@/lib/mixpanel";
+import { getEditIdeaRoute, getViewIdeaRoute } from "@/lib/routes";
+import { trpc } from "@/lib/trpc";
 
 const BlockIdea = ({ idea }: { idea: NonNullable<TrpcRouterOutput["getIdea"]["idea"]> }) => {
   const blockIdea = trpc.blockIdea.useMutation();

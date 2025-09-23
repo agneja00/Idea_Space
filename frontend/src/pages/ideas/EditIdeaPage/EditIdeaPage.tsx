@@ -2,19 +2,19 @@ import { zUpdateIdeaTrpcInput } from "@ideanick/backend/src/router/ideas/updateI
 import { canEditIdea } from "@ideanick/backend/src/utils/can";
 import { pick } from "@ideanick/shared/src/pick";
 import { useNavigate } from "react-router-dom";
-import { Alert } from "../../../components/Alert/Alert";
-import { Button } from "../../../components/Button/Button";
-import { FormItems } from "../../../components/FormItems/FormItems";
-import { Input } from "../../../components/Input/Input";
-import { Segment } from "../../../components/Segment/Segment";
-import { Textarea } from "../../../components/Textarea/Textarea";
-import { UploadToS3 } from "../../../components/UploadToS3/UploadToS3";
-import { UploadsToCloudinary } from "../../../components/UploadsToCloudinary/UploadsToCloudinary";
-import { useForm } from "../../../lib/form";
-import { withPageWrapper } from "../../../lib/pageWrapper";
-import { getEditIdeaRoute, getViewIdeaRoute } from "../../../lib/routes";
-import { trpc } from "../../../lib/trpc";
-import { UploadsToS3 } from "../../../components/UploadsToS3/UploadsToS3";
+import { Alert } from "@/components/Alert/Alert";
+import { Button } from "@/components/Button/Button";
+import { FormItems } from "@/components/FormItems/FormItems";
+import { Input } from "@/components/Input/Input";
+import { Segment } from "@/components/Segment/Segment";
+import { Textarea } from "@/components/Textarea/Textarea";
+import { UploadToS3 } from "@/components/UploadToS3/UploadToS3";
+import { UploadsToCloudinary } from "@/components/UploadsToCloudinary/UploadsToCloudinary";
+import { useForm } from "@/lib/form";
+import { withPageWrapper } from "@/lib/pageWrapper";
+import { getEditIdeaRoute, getViewIdeaRoute } from "@/lib/routes";
+import { trpc } from "@/lib/trpc";
+import { UploadsToS3 } from "@/components/UploadsToS3/UploadsToS3";
 
 export const EditIdeaPage = withPageWrapper({
   authorizedOnly: true,

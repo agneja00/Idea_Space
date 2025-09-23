@@ -2,15 +2,15 @@ import type { TrpcRouterOutput } from "@ideanick/backend/src/router";
 import { zUpdatePasswordTrpcInput } from "@ideanick/backend/src/router/auth/updatePassword/input";
 import { zUpdateProfileTrpcInput } from "@ideanick/backend/src/router/auth/updateProfile/input";
 import { zPasswordsMustBeTheSame, zStringRequired } from "@ideanick/shared/src/zod";
-import { Alert } from "../../../components/Alert/Alert";
-import { Button } from "../../../components/Button/Button";
-import { FormItems } from "../../../components/FormItems/FormItems";
-import { Input } from "../../../components/Input/Input";
-import { Segment } from "../../../components/Segment/Segment";
-import { UploadToCloudinary } from "../../../components/UploadToCloudinary/UploadToCloudinary";
-import { useForm } from "../../../lib/form";
-import { withPageWrapper } from "../../../lib/pageWrapper";
-import { trpc } from "../../../lib/trpc";
+import { Alert } from "@/components/Alert/Alert";
+import { Button } from "@/components/Button/Button";
+import { FormItems } from "@/components/FormItems/FormItems";
+import { Input } from "@/components/Input/Input";
+import { Segment } from "@/components/Segment/Segment";
+import { UploadToCloudinary } from "@/components/UploadToCloudinary/UploadToCloudinary";
+import { useForm } from "@/lib/form";
+import { withPageWrapper } from "@/lib/pageWrapper";
+import { trpc } from "@/lib/trpc";
 
 const General = ({ me }: { me: NonNullable<TrpcRouterOutput["getMe"]["me"]> }) => {
   const trpcUtils = trpc.useContext();
