@@ -70,6 +70,39 @@ export const sendIdeaBlockedEmail = async ({ user, idea }: { user: Pick<User, "e
   }
 };
 
+export const sendIdeaLikedEmail = async ({
+  user,
+  idea,
+  liker,
+}: {
+  user: Pick<User, "email">;
+  idea: Pick<Idea, "name">;
+  liker: { nick: string };
+}) => {
+  try {
+    const html = `
+      <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.5;">
+          <h1>Your Idea Liked</h1>
+          <p>Congratulations! <strong>${liker.nick}</strong> liked your idea: <strong>${idea.name}</strong></p>
+        </body>
+      </html>
+    `;
+
+    const text = `Congratulations!\n${liker.nick} liked your idea: ${idea.name}`;
+
+    return await sendEmail({
+      to: user.email,
+      from: env.FROM_EMAIL_ADDRESS,
+      subject: "Your Idea liked!",
+      text,
+      html,
+    });
+  } catch (error) {
+    logger.error("Failed to send idea liked email", error);
+  }
+};
+
 export const sendMostLikedIdeasEmail = async ({
   user,
   ideas,
