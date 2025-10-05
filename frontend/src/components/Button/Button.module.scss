@@ -11,14 +11,14 @@
   position: relative;
 
   &.color-green {
-    background-color: #0a980a;
+    background-color: #067306;
 
     &:hover {
-      background-color: #21b821;
+      background-color: #089b08;
     }
 
     &:active {
-      background-color: #39d039;
+      background-color: #0bb30b;
     }
   }
 
@@ -35,14 +35,14 @@
   }
 
   &.color-blue {
-    background-color: #007bff;
+    background-color: #0056b3;
 
     &:hover {
-      background-color: #3399ff;
+      background-color: #0066cc;
     }
 
     &:active {
-      background-color: #66b3ff;
+      background-color: #0077e6;
     }
   }
 
