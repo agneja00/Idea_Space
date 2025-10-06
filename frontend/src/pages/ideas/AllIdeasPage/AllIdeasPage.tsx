@@ -21,6 +21,7 @@ export const AllIdeasPage = withPageWrapper({
     initialValues: { search: "" },
     validationSchema: zGetIdeasTrpcInput.pick({ search: true }),
   });
+
   const [search] = useDebounceValue(formik.values.search, 500);
   const { data, error, isLoading, isError, hasNextPage, fetchNextPage, isFetchingNextPage, isRefetching } =
     trpc.getIdeas.useInfiniteQuery(
@@ -33,7 +34,6 @@ export const AllIdeasPage = withPageWrapper({
         },
       },
     );
-
   return (
     <Segment title="All Ideas">
       <div className={css.filter}>
@@ -65,21 +65,33 @@ export const AllIdeasPage = withPageWrapper({
           >
             {data?.pages
               .flatMap((page) => page.ideas)
-              .map((idea) => (
-                <div className={css.idea} key={idea.nick}>
-                  <Segment
-                    size={2}
-                    title={
-                      <Link className={css.ideaLink} to={getViewIdeaRoute({ ideaNick: idea.nick })}>
-                        {idea.name}
-                      </Link>
-                    }
-                    description={idea.description}
-                  >
-                    Likes: {idea.likesCount}
-                  </Segment>
-                </div>
-              ))}
+              .map((idea) => {
+                const visitedIdeas = JSON.parse(localStorage.getItem("visitedIdeas") || "[]") as string[];
+                const isVisited = visitedIdeas.includes(idea.nick);
+
+                return (
+                  <div className={css.idea} key={idea.nick}>
+                    <Segment
+                      size={2}
+                      title={
+                        <Link
+                          className={`${css.ideaLink} ${isVisited ? css.visited : ""}`}
+                          to={getViewIdeaRoute({ ideaNick: idea.nick })}
+                          onClick={() => {
+                            const updated = Array.from(new Set([...visitedIdeas, idea.nick]));
+                            localStorage.setItem("visitedIdeas", JSON.stringify(updated));
+                          }}
+                        >
+                          {idea.name}
+                        </Link>
+                      }
+                      description={idea.description}
+                    >
+                      Likes: {idea.likesCount}
+                    </Segment>
+                  </div>
+                );
+              })}
           </InfiniteScroll>
         </div>
       )}
