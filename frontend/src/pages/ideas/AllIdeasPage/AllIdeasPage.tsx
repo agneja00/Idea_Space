@@ -14,7 +14,7 @@ import { getViewIdeaRoute } from "@/lib/routes";
 import { trpc } from "@/lib/trpc";
 
 export const AllIdeasPage = withPageWrapper({
-  title: "IdeaNick",
+  title: "Idea Space",
   isTitleExact: true,
 })(() => {
   const { formik } = useForm({
