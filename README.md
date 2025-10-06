@@ -49,3 +49,6 @@ ideanick/
 
 - Website - [Agnieska Jackevic] (https://web-portfolio-agneja00.vercel.app/)
 - Linkedin - [Agnieska Jackevic] (https://www.linkedin.com/in/agnieska-jackevic/)
+
+![Screenshot](./frontend/src/assets/images/project_desktop.png)
+![Screenshot](./frontend/src/assets/images/project_mobile.png)
