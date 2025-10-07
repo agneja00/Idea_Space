@@ -22,14 +22,6 @@ A modern platform for sharing, exploring, and supporting creative ideas. Users c
 - Code URL: (https://github.com/agneja00/Idea_Space)
 - Live Site URL: (https://ideaspace-4fcd43ee8a12.herokuapp.com/)
 
-### Project Structure
-
-ideanick/
-├── backend/ # Express + TRPC API, Prisma ORM, authentication, storage, email
-├── frontend/ # React + Vite + TRPC client + React Query + Zod validation
-├── shared/ # Common TypeScript types and schemas
-└── package.json # Root scripts, linting, Docker & Heroku utilities
-
 ### Built With
 
 - **Frontend**: React 19, Vite, TypeScript, React Query, Zod, Formik, Sass
