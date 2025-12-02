@@ -1,3 +1,4 @@
 {
-  "eslint.workingDirectories": ["backend", "frontend", "shared"]
+  "eslint.workingDirectories": ["backend", "frontend", "shared"],
+  "prisma.pinToPrisma6": true
 }
