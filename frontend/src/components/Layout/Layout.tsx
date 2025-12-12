@@ -62,9 +62,9 @@ export const Layout = () => {
           )}
         </ul>
       </div>
-      <div className={css.content} ref={layoutContentElRef}>
+      <main className={css.content} ref={layoutContentElRef}>
         <Outlet />
-      </div>
+      </main>
     </div>
   );
 };
