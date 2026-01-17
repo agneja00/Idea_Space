@@ -11,6 +11,27 @@ import { UploadToCloudinary } from "@/components/UploadToCloudinary/UploadToClou
 import { useForm } from "@/lib/form";
 import { withPageWrapper } from "@/lib/pageWrapper";
 import { trpc } from "@/lib/trpc";
+import { FormikContextType } from "formik";
+import { useEffect } from "react";
+
+const BeforeUnloadWarning = ({ formik }: { formik: FormikContextType<any> }) => {
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (formik.dirty) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [formik.dirty]);
+
+  return null;
+};
 
 const General = ({ me }: { me: NonNullable<TrpcRouterOutput["getMe"]["me"]> }) => {
   const trpcUtils = trpc.useContext();
@@ -32,6 +53,7 @@ const General = ({ me }: { me: NonNullable<TrpcRouterOutput["getMe"]["me"]> }) =
 
   return (
     <form onSubmit={formik.handleSubmit}>
+      <BeforeUnloadWarning formik={formik} />
       <FormItems>
         <Input label="Nick" name="nick" formik={formik} />
         <Input label="Name" name="name" formik={formik} />
@@ -64,6 +86,7 @@ const Password = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
+      <BeforeUnloadWarning formik={formik} />
       <FormItems>
         <Input label="Old password" name="oldPassword" type="password" formik={formik} />
         <Input label="New password" name="newPassword" type="password" formik={formik} />
